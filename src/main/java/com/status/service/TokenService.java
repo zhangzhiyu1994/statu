@@ -22,6 +22,7 @@ public class TokenService
      */
    public String createdToken(){
        String token = IdUtil.randomUUID();
+       System.out.println("111111");
        Map<String, Object> map = new HashMap<>();
        map.put("token",token);
        String s = createdToken(map);
