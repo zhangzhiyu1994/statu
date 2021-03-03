@@ -49,7 +49,6 @@ public class UserController extends BaseController{
     @ApiImplicitParam(name = "user", value = "新增用户信息", dataType = "User")
     @PostMapping("register")
     public AjaxResult register (@RequestBody User user){
-        System.out.println("111111");
         User checkUser = userService.selectByPhone(user.getPhone());
         if (checkUser != null){
             return AjaxResult.error("手机号为"+user.getPhone()+"已经注册");
