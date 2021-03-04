@@ -1,6 +1,6 @@
 package com.status.mapper;
 
-import com.status.domain.Episode;
+import com.status.model.entity.Episode;
 
 /**
 * @Package com.status.mapper

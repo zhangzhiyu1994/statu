@@ -1,6 +1,6 @@
 package com.status.service;
 
-import com.status.domain.Video;
+import com.status.model.entity.Video;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.status.service.impl;
 
-import com.status.domain.Video;
+import com.status.model.entity.Video;
 import com.status.mapper.VideoMapper;
 import com.status.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;

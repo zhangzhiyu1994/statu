@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.status.mapper.VideoMapper">
-  <resultMap id="BaseResultMap" type="com.status.domain.Video">
+  <resultMap id="BaseResultMap" type="com.status.model.entity.Video">
     <!--@mbg.generated-->
     <!--@Table video-->
     <id column="id" jdbcType="INTEGER" property="id" />
@@ -14,7 +14,7 @@
     <collection property="listChapter" javaType="java.util.List" resultMap="ChapterResultMap"></collection>
   </resultMap>
 
-  <resultMap id="ChapterResultMap" type="com.status.domain.Chapter">
+  <resultMap id="ChapterResultMap" type="com.status.model.entity.Chapter">
     <!--@mbg.generated-->
     <!--@Table chapter-->
     <id column="chapter_id" jdbcType="INTEGER" property="id" />
@@ -25,7 +25,7 @@
     <collection property="listEpisode" javaType="java.util.List" resultMap="EpisodeResultMap"></collection>
   </resultMap>
 
-  <resultMap id="EpisodeResultMap" type="com.status.domain.Episode">
+  <resultMap id="EpisodeResultMap" type="com.status.model.entity.Episode">
     <!--@mbg.generated-->
     <!--@Table episode-->
     <id column="episode_id" jdbcType="INTEGER" property="id" />
@@ -71,7 +71,7 @@
     delete from video
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.status.domain.Video" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.status.model.entity.Video" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into video (title, summary, cover_img, 
       price, create_time, point
@@ -80,7 +80,7 @@
       #{price,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{point,jdbcType=DOUBLE}
       )
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.status.domain.Video" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.status.model.entity.Video" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into video
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -124,7 +124,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.status.domain.Video">
+  <update id="updateByPrimaryKeySelective" parameterType="com.status.model.entity.Video">
     <!--@mbg.generated-->
     update video
     <set>
@@ -149,7 +149,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.status.domain.Video">
+  <update id="updateByPrimaryKey" parameterType="com.status.model.entity.Video">
     <!--@mbg.generated-->
     update video
     set title = #{title,jdbcType=VARCHAR},

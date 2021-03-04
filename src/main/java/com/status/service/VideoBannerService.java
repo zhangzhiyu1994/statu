@@ -1,6 +1,6 @@
 package com.status.service;
 
-import com.status.domain.VideoBanner;
+import com.status.model.entity.VideoBanner;
 
 import java.util.List;
 

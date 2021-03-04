@@ -1,7 +1,7 @@
 package com.status.service.impl;
 
-import com.status.domain.User;
-import com.status.domain.VideoOrder;
+import com.status.model.entity.User;
+import com.status.model.entity.VideoOrder;
 import com.status.mapper.VideoOrderMapper;
 import com.status.service.VidolOrderService;
 import org.springframework.beans.factory.annotation.Autowired;

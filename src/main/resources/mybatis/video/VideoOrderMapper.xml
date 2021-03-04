@@ -3,7 +3,7 @@
 <mapper namespace="com.status.mapper.VideoOrderMapper">
   <!--开启二级缓存配置-->
   <cache eviction="LRU" flushInterval="100000" readOnly="true" size="1024"/>
-  <resultMap id="BaseResultMap" type="com.status.domain.VideoOrder">
+  <resultMap id="BaseResultMap" type="com.status.model.entity.VideoOrder">
     <!--@mbg.generated-->
     <!--@Table video_order-->
     <id column="id" jdbcType="INTEGER" property="id" />
@@ -15,9 +15,9 @@
     <result column="video_title" jdbcType="VARCHAR" property="videoTitle" />
     <result column="video_img" jdbcType="VARCHAR" property="videoImg" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <association property="user" javaType="com.status.domain.User" column="user_id" resultMap="UserResultMap"></association>
+    <association property="user" javaType="com.status.model.entity.User" column="user_id" resultMap="UserResultMap"></association>
   </resultMap>
-  <resultMap id="UserResultMap" type="com.status.domain.User">
+  <resultMap id="UserResultMap" type="com.status.model.entity.User">
     <!--@mbg.generated-->
     <!--@Table user-->
     <id column="user_id" jdbcType="INTEGER" property="id" />
@@ -28,7 +28,7 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
 
-  <resultMap id="UserResultsMap" type="com.status.domain.User">
+  <resultMap id="UserResultsMap" type="com.status.model.entity.User">
     <!--@mbg.generated-->
     <!--@Table user-->
     <id column="id" jdbcType="INTEGER" property="id" />
@@ -40,7 +40,7 @@
     <collection property="list" javaType="java.util.List" resultMap="VideoResultMap"/>
   </resultMap>
 
-  <resultMap id="VideoResultMap" type="com.status.domain.VideoOrder">
+  <resultMap id="VideoResultMap" type="com.status.model.entity.VideoOrder">
     <!--@mbg.generated-->
     <!--@Table video_order-->
     <result column="id" javaType="INTEGER" property="id"/>
@@ -115,7 +115,7 @@
     delete from video_order
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.status.domain.VideoOrder" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.status.model.entity.VideoOrder" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into video_order (out_trade_no, `state`, create_time, 
       total_fee, video_id, video_title, 
@@ -124,7 +124,7 @@
       #{totalFee,jdbcType=INTEGER}, #{videoId,jdbcType=INTEGER}, #{videoTitle,jdbcType=VARCHAR}, 
       #{videoImg,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.status.domain.VideoOrder" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.status.model.entity.VideoOrder" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into video_order
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -180,7 +180,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.status.domain.VideoOrder">
+  <update id="updateByPrimaryKeySelective" parameterType="com.status.model.entity.VideoOrder">
     <!--@mbg.generated-->
     update video_order
     <set>
@@ -211,7 +211,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.status.domain.VideoOrder">
+  <update id="updateByPrimaryKey" parameterType="com.status.model.entity.VideoOrder">
     <!--@mbg.generated-->
     update video_order
     set out_trade_no = #{outTradeNo,jdbcType=VARCHAR},

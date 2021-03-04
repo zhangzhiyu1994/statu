@@ -1,7 +1,8 @@
 package com.status.controller;
 
 import com.status.common.AjaxResult;
-import com.status.domain.User;
+import com.status.model.entity.User;
+import com.status.model.request.LoginRequest;
 import com.status.service.UserService;
 import com.status.utils.Md5Utils;
 import com.status.utils.StringUtils;
@@ -23,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Api(value="用户管理",tags = "用户管理")
 @RestController
-@RequestMapping("api/vi/pri/user")
+@RequestMapping("api/v1/pri/user")
 public class UserController extends BaseController{
     @Autowired
     private UserService userService;
@@ -33,11 +34,10 @@ public class UserController extends BaseController{
      * @return 返回token
      */
     @ApiOperation("用户登陆接口")
-    @ApiImplicitParam(name = "user", value = "用户登陆", dataType = "User")
+    @ApiImplicitParam(name = "user", value = "用户登陆", dataType = "LoginRequest")
     @PostMapping("login")
-    public AjaxResult login (@RequestBody User user){
-        System.out.println("111111");
-        return AjaxResult.success();
+    public AjaxResult login (@RequestBody LoginRequest user){
+        return userService.login(user);
     }
 
     /**
@@ -51,7 +51,7 @@ public class UserController extends BaseController{
     public AjaxResult register (@RequestBody User user){
 
 
-        User checkUser = userService.selectByPhone(user.getPhone());
+        User checkUser = userService.selectByPhone(user);
         if (checkUser != null){
             return AjaxResult.error("手机号为"+user.getPhone()+"已经注册");
         }

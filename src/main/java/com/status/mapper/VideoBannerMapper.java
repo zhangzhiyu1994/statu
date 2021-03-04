@@ -1,6 +1,6 @@
 package com.status.mapper;
 
-import com.status.domain.VideoBanner;
+import com.status.model.entity.VideoBanner;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

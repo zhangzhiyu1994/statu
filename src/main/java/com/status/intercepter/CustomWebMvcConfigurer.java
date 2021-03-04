@@ -8,19 +8,22 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * 拦截器通用配置类
+ * @author 张志宇
  */
 @Configuration
-class CustomWebMvcConfigurer implements WebMvcConfigurer {
+public class CustomWebMvcConfigurer implements WebMvcConfigurer {
 
+    /**
+     * 拦截路径
+     * @param registry 参数
+     */
     @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-
-//        registry.addInterceptor(getLoginInterceptor()).addPathPatterns("/api/v1/pri/**");
-
-//        registry.addInterceptor(new TwoIntercepter()).addPathPatterns("/api/v1/pri/**");
-
+    public void addInterceptors(InterceptorRegistry registry)
+    {
+        registry.addInterceptor(getLoginInterceptor()).addPathPatterns("/api/v1/pri/**")
+                .excludePathPatterns("/api/v1/pri/user/login")
+                .excludePathPatterns("/api/v1/pri/user/register");
         WebMvcConfigurer.super.addInterceptors(registry);
-
 
     }
 

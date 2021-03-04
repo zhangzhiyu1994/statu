@@ -1,17 +1,19 @@
 package com.status.service;
 
-import com.status.domain.User;
+import com.status.common.AjaxResult;
+import com.status.model.entity.User;
+import com.status.model.request.LoginRequest;
 
 public interface UserService {
 
-    String login(String username, String pwd);
+    AjaxResult login(LoginRequest user);
 
     /**
      * 验证根据手机号查询是否注册过
      * @param phone 手机号
      * @return 用户对象
      */
-    User selectByPhone(String phone);
+    User selectByPhone(User user);
 
     /**
      * 注册用户

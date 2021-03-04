@@ -1,6 +1,7 @@
 package com.status.mapper;
 
-import com.status.domain.User;
+import com.status.model.entity.User;
+import com.status.model.request.LoginRequest;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -29,7 +30,9 @@ public interface UserMapper {
      * @param phone 手机号
      * @return 用户对象
      */
-    User selectByPhone(String phone);
+    User selectByPhone(User user);
+
+    User loginInfo(LoginRequest user);
 
     int updateByPrimaryKeySelective(User record);
 

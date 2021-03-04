@@ -1,0 +1,56 @@
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: 30m
+  tomcat:
+    max-connections: 10000
+    threads:
+      max: 200
+    max-http-form-post-size: 2MB
+spring:
+  profiles:
+    active: druid
+  web:
+    resources:
+      static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,classpath:/templates/
+  redis:
+    # 地址
+    host: localhost
+    # 端口，默认为6379
+    port: 6379
+    # 密码
+    password:
+    # 连接超时时间
+    timeout: 10s
+    lettuce:
+      pool:
+        # 连接池中的最小空闲连接
+        min-idle: 0
+        # 连接池中的最大空闲连接
+        max-idle: 8
+        # 连接池的最大数据库连接数
+        max-active: 8
+        # #连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1ms
+  # 日志配置
+logging:
+  level:
+    com.status: debug
+    org.springframework: warn
+
+# 项目相关配置
+ruoyi:
+  # 名称
+  name: RuoYi
+  # 版本
+  version: 2.2.0
+  # 版权年份
+  copyrightYear: 2019
+  # 实例演示开关
+  demoEnabled: true
+  # 文件路径 示例（ Windows配置D:/ruoyi/uploadPath，Linux配置 /home/ruoyi/uploadPath）
+  profile: /usr/local/ruoyi/uploadPath
+  # 获取ip地址开关
+  addressEnabled: true
+

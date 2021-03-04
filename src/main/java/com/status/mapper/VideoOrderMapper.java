@@ -1,7 +1,7 @@
 package com.status.mapper;
 
-import com.status.domain.User;
-import com.status.domain.VideoOrder;
+import com.status.model.entity.User;
+import com.status.model.entity.VideoOrder;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
