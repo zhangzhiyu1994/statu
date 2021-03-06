@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
  * 订单视图层
  * @author 86159
  */
-@Api(value = "视频订单管理",tags = "视频订单管理")
+@Api(value = "视频订单管理a",tags = "视频订单管理a")
 @RestController
 @RequestMapping("api/v1/pri/order")
 public class VideoOrderController extends BaseController{
