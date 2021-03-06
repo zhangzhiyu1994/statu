@@ -1,5 +1,6 @@
 package com.status.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -24,7 +25,7 @@ public class VideoBanner implements Serializable {
     * 图片地址
     */
     private String img;
-
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     private Date createTime;
 
     /**

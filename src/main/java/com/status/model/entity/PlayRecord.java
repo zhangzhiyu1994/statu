@@ -1,5 +1,7 @@
 package com.status.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 /**
@@ -24,7 +26,7 @@ public class PlayRecord {
     * 当前播放第几集视频id
     */
     private Integer episodeId;
-
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     private Date createTime;
 
     public Integer getId() {

@@ -15,7 +15,7 @@ import java.util.List;
 @Mapper
 public interface VideoOrderMapper {
 
-    List<VideoOrder> selectVideoOrderList();
+    List<VideoOrder> selectVideoOrderList(Integer userId);
 
     List<User> selectUserVideoOrderList();
     int deleteByPrimaryKey(Integer id);

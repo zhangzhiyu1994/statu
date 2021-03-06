@@ -52,9 +52,13 @@ public class VideoOrderController extends BaseController{
      * 查询订单列表
      * @return
      */
+    @ApiOperation("查询登录人订单接口")
+    @ApiImplicitParam(value = "查询登录人订单信息")
     @GetMapping("list")
-    public AjaxResult selectOrderList(){
-        return AjaxResult.success(vidolOrderService.selectOrderList());
+    public AjaxResult selectOrderList(HttpServletRequest request){
+        Integer userId = (Integer) tokenService.getLoginUser(request).get("id");
+
+        return AjaxResult.success(vidolOrderService.selectOrderList(userId));
     }
 
 }

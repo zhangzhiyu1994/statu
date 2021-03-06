@@ -47,8 +47,8 @@ public class vidolOrderServiceImpl implements VidolOrderService {
     private PlayRecordMapper playRecordMapper;
 
     @Override
-    public List<VideoOrder> selectOrderList() {
-        return videoOrderMapper.selectVideoOrderList();
+    public List<VideoOrder> selectOrderList(Integer userId) {
+        return videoOrderMapper.selectVideoOrderList(userId);
     }
     @Override
     public List<User> selectUserOrderList() {

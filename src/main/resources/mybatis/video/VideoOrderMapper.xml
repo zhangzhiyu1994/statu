@@ -59,7 +59,7 @@
     user_id
   </sql>
 
-  <select id="selectVideoOrderList"  resultMap="BaseResultMap">
+  <select id="selectVideoOrderList" parameterType="java.lang.Integer"  resultMap="BaseResultMap">
     <!--@mbg.generated-->
     select
     o.id,
@@ -77,7 +77,7 @@
     u.head_img,
     u.phone,
     u.create_time
-    from video_order o left join user u  on o.user_id = u.id
+    from video_order o left join user u  on o.user_id = u.id where o.user_id = #{userId,jdbcType=INTEGER}
   </select>
 
   <select id="selectUserVideoOrderList"  resultMap="UserResultsMap">

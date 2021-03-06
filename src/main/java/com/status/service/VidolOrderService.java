@@ -18,7 +18,7 @@ public interface VidolOrderService {
      * 查询全部视频列表
      * @return
      */
-    List<VideoOrder> selectOrderList();
+    List<VideoOrder> selectOrderList(Integer userId);
 
     /**
      * 查询用户下的全部视频列表
