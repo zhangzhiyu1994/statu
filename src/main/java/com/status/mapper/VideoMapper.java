@@ -27,6 +27,13 @@ public interface VideoMapper {
      */
     List<Video> selectVideoList();
 
+    /**
+     * 查询单个视频
+     * @param id 视频id
+     * @return
+     */
+    Video selectById(Integer id);
+
     int updateByPrimaryKeySelective(Video record);
 
     int updateByPrimaryKey(Video record);

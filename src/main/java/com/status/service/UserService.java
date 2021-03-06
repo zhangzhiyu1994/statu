@@ -21,4 +21,11 @@ public interface UserService {
      * @return 成功返回1否则返回0
      */
     int insertSelective(User record);
+
+    /**
+     * 查询个人信息
+     * @param id
+     * @return 用户对象
+     */
+    User selectByPrimaryKey(Integer id);
 }

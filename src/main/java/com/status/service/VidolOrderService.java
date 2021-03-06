@@ -26,4 +26,10 @@ public interface VidolOrderService {
      */
     List<User> selectUserOrderList();
 
+    /**
+     * 视频下单
+     * @return 成功返回1
+     */
+    Integer  saveUserOrderById(VideoOrder videoOrde);
+
 }

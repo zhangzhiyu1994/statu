@@ -26,6 +26,13 @@ public interface VideoOrderMapper {
 
     VideoOrder selectByPrimaryKey(Integer id);
 
+    /**
+     * 查询是否购买过
+     * @param videoOrder
+     * @return 视频对象
+     */
+    VideoOrder selectOrderByIdAndStatus(VideoOrder videoOrder);
+
     int updateByPrimaryKeySelective(VideoOrder record);
 
     int updateByPrimaryKey(VideoOrder record);

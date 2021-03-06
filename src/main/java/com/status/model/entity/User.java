@@ -1,5 +1,6 @@
 package com.status.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -24,6 +25,7 @@ public class User implements Serializable {
     /**
      * 密码
      */
+    @JsonIgnore
     private String pwd;
 
     /**

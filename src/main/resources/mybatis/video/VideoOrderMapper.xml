@@ -110,6 +110,34 @@
     from video_order
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="selectOrderByIdAndStatus" parameterType="com.status.model.entity.VideoOrder" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <include refid="Base_Column_List" />
+    from video_order
+    <where>
+      <if test="id != null">
+        AND id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="state != null and state != ''">
+        AND state = #{state,jdbcType=VARCHAR}
+      </if>
+      <if test="outTradeNo != null and outTradeNo != ''">
+        AND out_trade_no = #{outTradeNo,jdbcType=VARCHAR}
+      </if>
+      <if test="state != null ">
+        AND state = #{state,jdbcType=INTEGER}
+      </if>
+      <if test="userId != null ">
+        AND user_id = #{userId,jdbcType=INTEGER}
+      </if>
+      <if test="videoId != null and videoId != ''">
+        AND video_id = #{videoId,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--@mbg.generated-->
     delete from video_order

@@ -60,6 +60,13 @@
     order by c.ordered,e.num asc
   </select>
 
+  <select id="selectById" parameterType="java.lang.Integer" resultType="com.status.model.entity.Video">
+    select
+    <include refid="Base_Column_List" />
+    from video
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
   <select id="selectVideoList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--@mbg.generated-->
     select

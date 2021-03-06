@@ -11,13 +11,12 @@
     <result column="play_url" jdbcType="VARCHAR" property="playUrl" />
     <result column="chapter_id" jdbcType="INTEGER" property="chapterId" />
     <result column="free" jdbcType="TINYINT" property="free" />
-    <result column="cover_img" jdbcType="VARCHAR" property="coverImg" />
     <result column="video_id" jdbcType="INTEGER" property="videoId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, title, num, ordered, play_url, chapter_id, `free`, cover_img, video_id, create_time
+    id, title, num, ordered, play_url, chapter_id, `free`, video_id, create_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--@mbg.generated-->
@@ -26,6 +25,16 @@
     from episode
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="findFirstEpisodeByVideoId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select
+    <include refid="Base_Column_List" />
+    from episode where video_id = #{videoId} and num = 1
+
+  </select>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--@mbg.generated-->
     delete from episode
@@ -35,11 +44,11 @@
     <!--@mbg.generated-->
     insert into episode (title, num, ordered, 
       play_url, chapter_id, `free`, 
-      cover_img, video_id, create_time
+      video_id, create_time
       )
     values (#{title,jdbcType=VARCHAR}, #{num,jdbcType=INTEGER}, #{ordered,jdbcType=INTEGER}, 
       #{playUrl,jdbcType=VARCHAR}, #{chapterId,jdbcType=INTEGER}, #{free,jdbcType=TINYINT}, 
-      #{coverImg,jdbcType=VARCHAR}, #{videoId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}
+       #{videoId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.status.model.entity.Episode" useGeneratedKeys="true">
@@ -63,9 +72,6 @@
       </if>
       <if test="free != null">
         `free`,
-      </if>
-      <if test="coverImg != null">
-        cover_img,
       </if>
       <if test="videoId != null">
         video_id,
@@ -92,9 +98,6 @@
       </if>
       <if test="free != null">
         #{free,jdbcType=TINYINT},
-      </if>
-      <if test="coverImg != null">
-        #{coverImg,jdbcType=VARCHAR},
       </if>
       <if test="videoId != null">
         #{videoId,jdbcType=INTEGER},
@@ -126,9 +129,6 @@
       <if test="free != null">
         `free` = #{free,jdbcType=TINYINT},
       </if>
-      <if test="coverImg != null">
-        cover_img = #{coverImg,jdbcType=VARCHAR},
-      </if>
       <if test="videoId != null">
         video_id = #{videoId,jdbcType=INTEGER},
       </if>
@@ -147,7 +147,6 @@
       play_url = #{playUrl,jdbcType=VARCHAR},
       chapter_id = #{chapterId,jdbcType=INTEGER},
       `free` = #{free,jdbcType=TINYINT},
-      cover_img = #{coverImg,jdbcType=VARCHAR},
       video_id = #{videoId,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

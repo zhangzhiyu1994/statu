@@ -1,6 +1,7 @@
 package com.status.mapper;
 
 import com.status.model.entity.Episode;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
 * @Package com.status.mapper
@@ -8,6 +9,7 @@ import com.status.model.entity.Episode;
 * @date 2021/2/27 9:39
 * @version V1.0
 */
+@Mapper
 public interface EpisodeMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -20,4 +22,7 @@ public interface EpisodeMapper {
     int updateByPrimaryKeySelective(Episode record);
 
     int updateByPrimaryKey(Episode record);
+
+
+    Episode findFirstEpisodeByVideoId(Integer videoId);
 }

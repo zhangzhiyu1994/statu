@@ -40,7 +40,6 @@ public class UserServiceImpl implements UserService {
             map.put("username",user1.getName());
             return AjaxResult.success("登陆成功",map);
         }
-        //TODO 验证账户密码逻辑
       return AjaxResult.error("登陆失败");
     }
 
@@ -63,5 +62,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public int insertSelective(User record){
         return userMapper.insertSelective(record);
+    }
+
+    /**
+     * 查询个人信息
+     * @param id id
+     * @return 用户对象
+     */
+    @Override
+    public User selectByPrimaryKey(Integer id){
+        return userMapper.selectByPrimaryKey(id);
     }
 }
