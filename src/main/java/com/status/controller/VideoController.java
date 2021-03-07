@@ -2,7 +2,6 @@ package com.status.controller;
 
 import com.status.common.AjaxResult;
 import com.status.service.VideoService;
-import com.status.utils.DateUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -32,7 +31,6 @@ public class VideoController {
     @ApiImplicitParam(value = "视频列表")
     @GetMapping("list")
     public AjaxResult selectOrderList(){
-        System.out.println(DateUtils.getMonthFristDate()+"--"+DateUtils.getMonthLastDate());
         return AjaxResult.success(videoService.selectVideoList());
     }
 
