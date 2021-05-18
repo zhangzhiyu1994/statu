@@ -49,6 +49,7 @@ public class UserProducer implements Runnable {
             UserConsumer consumer = (UserConsumer) consumers.take();
             consumer.setData(user);
             //消费者线程执行
+            System.out.println("11111111");
             executor.execute(consumer);
         }catch (Exception e){
             LOGGER.error("生产者发生异常=======》",e);
