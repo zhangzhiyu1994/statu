@@ -1,5 +1,6 @@
 package com.status.controller;
 
+import com.status.ascpecta.lang.annotation.Log;
 import com.status.common.AjaxResult;
 import com.status.service.VideoService;
 import io.swagger.annotations.Api;
@@ -7,8 +8,8 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -30,7 +31,9 @@ public class VideoController {
     @ApiOperation("视频列表")
     @ApiImplicitParam(value = "视频列表")
     @GetMapping("list")
+    @Log(title = "视频管理",businessType = "查询所有视频列表")
     public AjaxResult selectOrderList(){
+        System.out.println("这是第一个");
         return AjaxResult.success(videoService.selectVideoList());
     }
 
@@ -40,8 +43,8 @@ public class VideoController {
      */
     @ApiOperation("视频详情")
     @ApiImplicitParam(name = "id",value = "视频列表" ,dataType = "Integer")
-    @GetMapping("videodel")
-    public AjaxResult selectVidelDel(@RequestParam(value = "id" ,required = true) Integer id){
+    @GetMapping(value = { "/", "/{id}" })
+    public AjaxResult selectVidelDel(@PathVariable(value = "id",required = true) Integer id){
         return AjaxResult.success(videoService.selectByPrimaryKey(id));
     }
 

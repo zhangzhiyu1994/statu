@@ -5,6 +5,7 @@ import com.status.utils.spring.SpringUtils;
 
 import java.util.TimerTask;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -45,7 +46,14 @@ public class AsyncManager
     {
         executor.schedule(task, OPERATE_DELAY_TIME, TimeUnit.MILLISECONDS);
     }
-
+    /**
+     * 执行任务
+     *
+     */
+    public ThreadPoolExecutor executeMake()
+    {
+        return (ThreadPoolExecutor) executor;
+    }
     /**
      * 停止任务线程池
      */

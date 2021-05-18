@@ -7,12 +7,16 @@ import com.status.model.request.LoginRequest;
 import com.status.redis.RedisCache;
 import com.status.service.TokenService;
 import com.status.service.UserService;
+import com.status.task.AsyncManager;
+import com.status.thread.UserConsumer;
+import com.status.thread.UserProducer;
 import com.status.utils.Md5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.LinkedBlockingQueue;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -72,5 +76,31 @@ public class UserServiceImpl implements UserService {
     @Override
     public User selectByPrimaryKey(Integer id){
         return userMapper.selectByPrimaryKey(id);
+    }
+    /**
+     * 修改个人信息
+     * @param user
+     * @return 用户对象
+     */
+    @Override
+    public int updateByPrimaryKey(User user){
+        int i = userMapper.updateByPrimaryKeySelective(user);
+        if (i > 0){
+//            ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(10, 20, 5L, TimeUnit.SECONDS, new LinkedBlockingQueue<>(20));
+            //建立最大数为100的阻塞队列
+            LinkedBlockingQueue<Runnable> runnables = new LinkedBlockingQueue<>(100);
+            user.setPhone("15940100213");
+            //调用用户生产者
+            UserProducer producer = new UserProducer(user,runnables, AsyncManager.me().executeMake());
+            //启动生产者线程
+            new Thread(producer).start();
+            try {
+                //将数据可以消费者对象的形式放入阻塞队列中
+                runnables.put(new UserConsumer(userMapper,runnables));
+            }catch (Exception e){
+                System.out.println("消费者异常");
+            }
+        }
+        return i;
     }
 }

@@ -87,4 +87,15 @@ public class UserController extends BaseController{
         }
         return AjaxResult.success(userService.selectByPrimaryKey(id));
     }
+
+
+
+    @ApiOperation("修改用户信息接口")
+    @ApiImplicitParam(name = "",value = "修改用户信息",dataType = "User")
+    @PostMapping("updateuser")
+    public AjaxResult updateUserById(@RequestBody User user, HttpServletRequest request)
+    {
+
+        return AjaxResult.success(userService.updateByPrimaryKey(user));
+    }
 }

@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Mapper;
 */
 @Mapper
 public interface ChapterMapper {
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(Chapter record);

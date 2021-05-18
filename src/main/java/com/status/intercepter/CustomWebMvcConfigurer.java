@@ -13,6 +13,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class CustomWebMvcConfigurer implements WebMvcConfigurer {
 
+    @Bean
+    CorsInterceptor corsInterceptor(){
+        return new CorsInterceptor();
+    }
     /**
      * 拦截路径
      * @param registry 参数
@@ -20,6 +24,10 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry)
     {
+        /**
+         * 拦截全部路径，这个跨域需要放在最上面
+         */
+        registry.addInterceptor(corsInterceptor()).addPathPatterns("/**");
         registry.addInterceptor(getLoginInterceptor()).addPathPatterns("/api/v1/pri/**")
                 .excludePathPatterns("/api/v1/pri/user/login")
                 .excludePathPatterns("/api/v1/pri/user/register");

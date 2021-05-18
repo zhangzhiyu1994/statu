@@ -28,4 +28,11 @@ public interface UserService {
      * @return 用户对象
      */
     User selectByPrimaryKey(Integer id);
+
+    /**
+     * 修改个人信息
+     * @param user
+     * @return 用户对象
+     */
+    int updateByPrimaryKey(User user);
 }
